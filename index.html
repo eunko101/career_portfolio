@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>이은경 포트폴리오</title>
+<meta name="description" content="이은경 포트폴리오. 자연어처리 석사, 기업 AX 과제 발굴과 설계.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css">
+<style>
+/* 기준: 은경님 「Wanted Design System」(Montage @montage-ui/theme 4.1.0 토큰 · Wanted Sans).
+   포인트 컬러는 주황 하나(D54 · D78). 주황은 큰 숫자 · 짧은 선 · 점에만 쓰고, 작은 글자에는 쓰지 않는다(흰 바탕 대비 부족) */
+:root {
+  --fg1: #171719;                /* foreground-neutral-primary */
+  --fg2: rgba(46,47,51,.88);     /* foreground-neutral-secondary */
+  --fg3: rgba(55,56,60,.61);     /* foreground-neutral-tertiary: 캡션 · 보조 정보에만 */
+  --bg1: #ffffff;                /* background-neutral-primary */
+  --bg2: #F7F7F8;                /* background-neutral-secondary */
+  --line: #E1E2E4;               /* line-neutral-primary-opaque */
+  --line2: #EAEBEC;              /* line-neutral-secondary-opaque */
+  --point: #FE6019;
+  --wide: 1120px;
+  --rail: 248px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--bg1); color: var(--fg1);
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", system-ui, sans-serif;
+  font-size: 1rem; line-height: 1.625rem; letter-spacing: .0057em;   /* body1-reading-regular */
+  word-break: keep-all; overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased; font-feature-settings: "tnum" 0;
+}
+a { color: inherit; }
+h1, h2, h3, h4, p, ul, ol, figure, blockquote { margin: 0; padding: 0; }
+img { max-width: 100%; height: auto; display: block; }
+.wrap { max-width: var(--wide); margin: 0 auto; padding: 0 32px; }
+
+/* 상단 줄 */
+.bar { position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,.92);
+       backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--line2); }
+.bar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 56px; }
+.bar .mark { font-size: .875rem; font-weight: 700; letter-spacing: .0145em; text-decoration: none; white-space: nowrap; }
+.bar .mark span { color: var(--fg3); font-weight: 500; margin-left: 8px; }
+.bar nav { display: flex; gap: 24px; overflow-x: auto; scrollbar-width: none; }
+.bar nav::-webkit-scrollbar { display: none; }
+.bar nav a { flex: none; font-size: .875rem; line-height: 1.25rem; font-weight: 500; color: var(--fg2);
+             text-decoration: none; letter-spacing: .0145em; white-space: nowrap; }
+.bar nav a:hover { color: var(--fg1); }
+
+/* 첫 화면 */
+.hero { padding: 104px 0 96px; }
+.hero .kicker { font-size: .8125rem; font-weight: 600; letter-spacing: .12em; color: var(--fg2); text-transform: uppercase; }
+.hero .kicker::before { content: ""; display: inline-block; width: 24px; height: 2px; margin-right: 12px;
+                        vertical-align: 4px; background: var(--point); }
+.hero h1 { margin-top: 32px; font-size: 3.5rem; line-height: 4.5rem; font-weight: 700; letter-spacing: -.0319em; max-width: 16em; }
+.hero h1 .soft { color: var(--fg3); }
+.hero .who { margin-top: 32px; display: grid; grid-template-columns: var(--rail) 1fr; gap: 32px; align-items: end;
+             padding-top: 24px; border-top: 1px solid var(--fg1); }
+.hero .name { font-size: 3.5rem; line-height: 4.5rem; font-weight: 700; letter-spacing: -.0319em; }   /* display1-bold: 첫 화면의 주인공은 이름 */
+.hero .role { font-size: 1.125rem; line-height: 1.625rem; font-weight: 600; letter-spacing: -.002em; color: var(--fg2); }
+.contact { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-top: 12px; font-size: .9375rem; line-height: 1.5rem; color: var(--fg2); }
+.contact a { text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 1px; }
+.contact a:hover { border-color: var(--fg1); color: var(--fg1); }
+
+/* 절: 왼쪽 레일 + 오른쪽 본문 */
+.section { padding: 96px 0; border-top: 1px solid var(--line); scroll-margin-top: 56px; }
+.section.tint { background: var(--bg2); border-top: 0; }
+.grid { display: grid; grid-template-columns: var(--rail) 1fr; gap: 32px; }
+.rail { align-self: start; position: sticky; top: 88px; }
+.rail .no { display: block; font-size: 5.5rem; line-height: 1; font-weight: 800; letter-spacing: -.04em; color: var(--point); }
+.rail .label { display: block; margin-top: 16px; font-size: .8125rem; line-height: 1.125rem; font-weight: 600; letter-spacing: .12em; color: var(--fg2); text-transform: uppercase; }
+.body { min-width: 0; }
+.body > h2 { font-size: 2.5rem; line-height: 3.25rem; font-weight: 700; letter-spacing: -.0282em; }
+.meta { margin-top: 12px; font-size: .9375rem; line-height: 1.5rem; color: var(--fg2); }
+.meta b { font-weight: 600; color: var(--fg1); }
+
+/* 여정 */
+.journey { margin-top: 48px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; list-style: none; border-top: 1px solid var(--fg1); }
+.journey li { padding: 24px 24px 0 0; position: relative; }
+.journey li + li { padding-left: 24px; border-left: 1px solid var(--line); }
+.journey .when { font-size: .8125rem; line-height: 1.125rem; font-weight: 600; letter-spacing: .04em; color: var(--fg2); }
+.journey h3 { margin-top: 12px; font-size: 1.25rem; line-height: 1.75rem; font-weight: 600; letter-spacing: -.012em; }
+.journey p { margin-top: 12px; font-size: .9375rem; line-height: 1.5rem; letter-spacing: .0096em; color: var(--fg2); }
+.journey .school { margin-top: 12px; font-size: .8125rem; line-height: 1.125rem; color: var(--fg2); }
+.journey li.now::before { content: ""; position: absolute; top: -5px; left: 24px; width: 9px; height: 9px; border-radius: 50%; background: var(--point); }
+.journey li.now h3 { color: var(--fg1); }
+
+/* 사례 */
+.lead { margin-top: 40px; font-size: 1.25rem; line-height: 2rem; font-weight: 500; letter-spacing: -.012em; color: var(--fg1); max-width: 36em; }
+.block { margin-top: 48px; }
+.block > h3 { font-size: .8125rem; line-height: 1.125rem; font-weight: 600; letter-spacing: .12em; color: var(--fg2); text-transform: uppercase;
+              padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.block > p { margin-top: 16px; color: var(--fg2); max-width: 40em; }
+.list { margin-top: 16px; list-style: none; }
+.list li { position: relative; padding: 14px 0 14px 32px; border-bottom: 1px solid var(--line2); color: var(--fg1); }
+.list li::before { content: counter(item, decimal-leading-zero); counter-increment: item; position: absolute; left: 0; top: 14px;
+                   font-size: .8125rem; font-weight: 700; color: var(--fg3); letter-spacing: .02em; }
+.list { counter-reset: item; }
+
+/* 내가 본 것: 크게 인용 */
+.seen { margin-top: 48px; padding: 40px 0 0; position: relative; }
+.seen::before { content: ""; position: absolute; top: 0; left: 0; width: 48px; height: 3px; background: var(--point); }
+.seen .tag { font-size: .8125rem; line-height: 1.125rem; font-weight: 600; letter-spacing: .12em; color: var(--fg2); text-transform: uppercase; }
+.seen blockquote { margin-top: 16px; font-size: 1.75rem; line-height: 2.5rem; font-weight: 600; letter-spacing: -.0236em; color: var(--fg1); max-width: 22em; }
+.seen blockquote .soft { color: var(--fg3); }
+
+/* 흐름 */
+.flow { margin-top: 20px; display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; list-style: none; border-top: 1px solid var(--fg1); }
+.flow li { padding: 16px 16px 0 0; font-size: .9375rem; line-height: 1.375rem; font-weight: 600; letter-spacing: .0096em; position: relative; }
+.flow li .n { display: block; margin-bottom: 8px; font-size: .75rem; line-height: 1rem; font-weight: 700; letter-spacing: .0252em; color: var(--fg3); }
+.flow li.key::before { content: ""; position: absolute; top: -2px; left: 0; right: 16px; height: 3px; background: var(--point); }
+.flow li.key .n { color: var(--fg1); }
+.flow-note { margin-top: 16px; font-size: .875rem; line-height: 1.375rem; color: var(--fg2); }
+
+/* 수치 */
+.stats { margin-top: 20px; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--fg1); }
+.stat { padding: 24px 24px 0 0; }
+.stat + .stat { padding-left: 24px; border-left: 1px solid var(--line); }
+.stat b { display: block; font-size: 2.5rem; line-height: 3.25rem; font-weight: 700; letter-spacing: -.0282em; }
+.stat b.pt { color: var(--point); }
+.stat span { display: block; margin-top: 8px; font-size: .875rem; line-height: 1.375rem; color: var(--fg2); }
+
+/* 표 */
+.table { margin-top: 20px; width: 100%; border-collapse: collapse; }
+.table th { text-align: left; font-size: .8125rem; line-height: 1.125rem; font-weight: 600; letter-spacing: .04em; color: var(--fg2);
+            padding: 0 16px 12px 0; border-bottom: 1px solid var(--fg1); }
+.table td { text-align: left; vertical-align: top; padding: 16px 16px 16px 0; border-bottom: 1px solid var(--line); font-size: .9375rem; line-height: 1.5rem; }
+.table td:first-child { color: var(--fg2); width: 55%; }
+.table td:last-child { font-weight: 600; }
+.note { margin-top: 16px; font-size: .9375rem; line-height: 1.5rem; color: var(--fg2); }
+.note b { color: var(--fg1); font-weight: 600; }
+
+/* 그림 */
+figure { margin-top: 32px; }
+figure img { border-radius: 12px; border: 1px solid var(--line); background: #fff; }
+figcaption { margin-top: 12px; font-size: .8125rem; line-height: 1.125rem; letter-spacing: .0194em; color: var(--fg2); }
+.figs { display: grid; gap: 24px; }
+
+.tools { margin-top: 16px; font-size: .8125rem; line-height: 1.125rem; letter-spacing: .0194em; color: var(--fg2); }
+
+/* 이력서 링크로 들어오면 그 사례 번호가 한 번 깜빡인다 */
+.section:target .rail .no { animation: pulse 1.6s ease-out 1; }
+@keyframes pulse { 0% { opacity: .25; transform: translateY(6px); } 100% { opacity: 1; transform: none; } }
+
+/* 끝 */
+.end { padding: 96px 0 72px; background: var(--fg1); color: #fff; }
+.end .kicker { font-size: .8125rem; font-weight: 600; letter-spacing: .12em; color: rgba(255,255,255,.72); text-transform: uppercase; }
+.end h2 { margin-top: 24px; font-size: 2.5rem; line-height: 3.25rem; font-weight: 700; letter-spacing: -.0282em; }
+.end .copy { margin-top: 12px; font-size: 1.375rem; line-height: 1.875rem; font-weight: 600; letter-spacing: -.0194em; color: rgba(255,255,255,.88); }   /* heading1-bold */
+.end .copy .pt { color: var(--point); white-space: nowrap; }
+.end h2 .pt { color: var(--point); }
+.end .contact { margin-top: 32px; color: rgba(255,255,255,.88); font-size: 1.0625rem; }
+.end .contact a { border-color: rgba(255,255,255,.32); }
+.end .contact a:hover { color: #fff; border-color: #fff; }
+.end .fine { margin-top: 64px; font-size: .75rem; line-height: 1rem; color: rgba(255,255,255,.6); letter-spacing: .0252em; }
+
+@media (max-width: 960px) {
+  :root { --rail: 160px; }
+  .hero h1 { font-size: 2.5rem; line-height: 3.25rem; }
+  .journey { grid-template-columns: 1fr 1fr; }
+  .journey li:nth-child(3) { padding-left: 0; border-left: 0; }
+  .journey li:nth-child(n+3) { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--line); }
+  .rail .no { font-size: 4rem; }
+}
+@media (max-width: 680px) {
+  .wrap { padding: 0 20px; }
+  .bar .mark span { display: none; }
+  .hero { padding: 64px 0 56px; }
+  .hero h1 { margin-top: 24px; font-size: 2rem; line-height: 2.75rem; letter-spacing: -.0253em; }
+  .hero .who { grid-template-columns: 1fr; gap: 8px; margin-top: 24px; }
+  .hero .name { font-size: 2.5rem; line-height: 3.25rem; letter-spacing: -.0282em; }
+  .section { padding: 64px 0; }
+  .grid { grid-template-columns: 1fr; gap: 16px; }
+  .rail { position: static; display: flex; align-items: baseline; gap: 12px; }
+  .rail .no { font-size: 3rem; }
+  .rail .label { margin-top: 0; }
+  .body > h2 { font-size: 1.75rem; line-height: 2.375rem; letter-spacing: -.0236em; }
+  .journey { grid-template-columns: 1fr; }
+  .journey li, .journey li + li { padding: 20px 0 0; border-left: 0; }
+  .journey li + li { margin-top: 24px; border-top: 1px solid var(--line); }
+  .journey li:nth-child(n+3) { margin-top: 24px; }
+  .journey li.now::before { left: 0; }
+  .lead { font-size: 1.125rem; line-height: 1.75rem; }
+  .seen blockquote { font-size: 1.375rem; line-height: 1.875rem; }
+  .flow { grid-auto-flow: row; border-top: 0; }
+  .flow li { padding: 12px 0 12px 0; border-top: 1px solid var(--line); }
+  .flow li.key::before { right: 0; top: -1px; }
+  .stats { grid-template-columns: 1fr; }
+  .stat, .stat + .stat { padding: 20px 0; border-left: 0; }
+  .stat + .stat { border-top: 1px solid var(--line); }
+  .table td:first-child { width: auto; }
+  .end h2 { font-size: 1.75rem; line-height: 2.375rem; }
+  .end .copy { font-size: 1.125rem; line-height: 1.625rem; }
+}
+@media print {
+  .bar { display: none; }
+  .rail { position: static; }
+  .section { padding: 48px 0; }
+  figure, .stats, .flow, .table, .seen { break-inside: avoid; }
+  .end { background: none; color: var(--fg1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .section:target .rail .no { animation: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="mark" href="#top">이은경<span>Portfolio</span></a>
+    <nav aria-label="바로가기">
+      <a href="#journey">여정</a>
+      <a href="#llm-evaluation">LLM 평가 연구</a>
+      <a href="#agent-camp">Agent 캠프</a>
+      <a href="#diagnosis">조직 진단</a>
+      <a href="#roadmap">AX 로드맵</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap">
+    <p class="kicker">Portfolio</p>
+    <div class="who">
+      <h1 class="name">이은경</h1>
+      <div>
+        <p class="role">자연어처리 석사 · 기업 AX 과제 발굴과 설계</p>
+        <p class="contact">
+          <a href="mailto:lee.eunkyung001@gmail.com">lee.eunkyung001@gmail.com</a>
+          <a href="https://www.linkedin.com/in/lee-eunkyung" target="_blank" rel="noopener">LinkedIn</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section tint" id="journey">
+  <div class="wrap">
+    <div class="grid">
+      <div class="rail"><span class="no">00</span><span class="label">Journey</span></div>
+      <div class="body">
+        <h2>여정</h2>
+        <p class="meta">언어에서 AI로, 배움에서 기업의 AX로</p>
+      </div>
+    </div>
+    <ol class="journey">
+      <li>
+        <p class="when">2018 ~ 2024 · 파리</p>
+        <h3>언어와 인공지능을 함께 공부하다</h3>
+        <p>외국어를 좋아해 프랑스어를 배웠고, 사람의 언어를 이해하는 AI에 관심이 생겨 파리에서 언어학과 인공지능을 함께 공부했습니다. 연구 기관에서는 AI 튜터와 학습자의 대화 데이터를 분석하고 라벨링 기준을 맞췄고, 프랑스 경제부 디지털 규제 전문 센터에서 LLM 평가 연구로 학위논문을 썼습니다.</p>
+        <p class="school">Université Paris Nanterre 언어학 학사<br>Université Paris Cité 언어공학(자연어처리) 석사</p>
+      </li>
+      <li>
+        <p class="when">2020 ~ 2025 · Suit</p>
+        <h3>배우는 사람 곁에서 도구를 만들다</h3>
+        <p>공부와 연구를 하며 제가 배움의 과정 자체에 관심이 많다는 것을 알게 됐습니다. 외국어 학습 서비스 Suit를 직접 운영하며 학습자마다 맞춤 커리큘럼을 만들었고, 학습자의 수준과 관심사에 맞춘 GPTs 9개와 디지털 학습지를 만들었습니다.</p>
+      </li>
+      <li>
+        <p class="when">2025 ~ 2026 · 모두의연구소</p>
+        <h3>교육으로 기업의 AX를 돕다</h3>
+        <p>기업교육팀에서 여러 고객사의 AI 교육을 기획했습니다. 조직의 AI 활용 수준을 진단하고, 현업 구성원이 자기 업무용 AI 에이전트를 직접 만드는 과정을 설계했습니다.</p>
+      </li>
+      <li class="now">
+        <p class="when">지금 · 교육 다음</p>
+        <h3>지금 보는 곳</h3>
+        <p>교육 만족도는 대체로 높았지만, 배운 사람이 실제로 업무에 썼는지는 알기 어려웠습니다. 기본적인 업무 환경이 갖춰지지 않은 조직에서는 아무리 좋은 AI도 녹아들지 못한다는 것도 보았습니다. 교육은 씨앗을 뿌리는 일입니다. 이제는 조직의 목표와 업무 환경, 도메인 데이터라는 토양을 이해하는 데서 출발해, AI가 업무에 뿌리내리고 성과로 이어질 때까지 이끌어 가려 합니다.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="section" id="llm-evaluation">
+  <div class="wrap grid">
+    <div class="rail"><span class="no">01</span><span class="label">Case</span></div>
+    <div class="body">
+      <h2>LLM 평가 연구</h2>
+      <p class="meta"><b>프랑스 경제부 디지털 규제 전문 센터(PEReN)</b> · 2024.03 ~ 2024.08 · 석사 학위논문</p>
+      <p class="lead">온라인 콘텐츠의 혐오 표현을 LLM이 자동으로 가려내게 하는 연구. 어떤 프롬프트 전략이 어떤 모델에서 잘 작동하는지 재는 틀이 필요했습니다.</p>
+
+      <div class="block">
+        <h3>한 일</h3>
+        <ul class="list">
+          <li>최신 논문과 사례를 바탕으로 여러 프롬프트 전략을 설계하고 최적화</li>
+          <li>여러 LLM의 혐오 표현 분류 성과를 정량 · 정성 방법으로 비교하는 평가 프레임워크 구축</li>
+          <li>모델 응답이 지나치게 장황한 문제에는 LLM-judge 전략을 설계. 첫 모델의 분류 응답이 장황하면 두 번째 모델이 요약하고 다시 분류해, 정확하고 간결한 예측을 유도</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>평가 흐름</h3>
+        <ol class="flow">
+          <li><span class="n">01</span>프롬프트 전략 설계</li>
+          <li><span class="n">02</span>여러 LLM의 분류</li>
+          <li class="key"><span class="n">03</span>장황한 응답은 LLM-judge가 요약 · 재분류</li>
+          <li><span class="n">04</span>정량 · 정성 평가</li>
+        </ol>
+      </div>
+
+      <div class="block">
+        <h3>결과</h3>
+        <p>이 연구로 석사 학위논문 「Hate Speech Detection with Prompting LLM」을 썼습니다. 데이터는 프랑스어, 논문은 영어입니다.</p>
+        <p class="tools">OpenAI API · Hugging Face · vLLM · Python</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="agent-camp">
+  <div class="wrap grid">
+    <div class="rail"><span class="no">02</span><span class="label">Case</span></div>
+    <div class="body">
+      <h2>현업 주도 Agent 캠프</h2>
+      <p class="meta"><b>대기업 통신사 S사</b> · 5일 과정 · 과정 설계와 제안 리드</p>
+      <p class="lead">전사 AX 가속화를 위한 경쟁입찰. 가상 데스크톱(VDI) 환경이라 외부 도구를 쓸 수 없는 조건에서, 현업 구성원이 사내 플랫폼의 노코드 · 로우코드만으로 업무용 AI 에이전트 MVP를 5일 안에 직접 만드는 과정.</p>
+
+      <div class="seen">
+        <p class="tag">내가 본 것</p>
+        <blockquote>만들고 싶은 것과 지금 만들 수 있는 것은 다릅니다. <span class="soft">그래서 자동화할 업무를 넓게 꺼낸 뒤, 「사내 툴 · 사내망 · 주어진 데이터로 지금 만들 수 있는가」로 좁혔습니다.</span></blockquote>
+      </div>
+
+      <div class="block">
+        <h3>Idea to MVP 5단계</h3>
+        <ol class="flow">
+          <li><span class="n">01</span>발산기획</li>
+          <li><span class="n">02</span>학습</li>
+          <li class="key"><span class="n">03</span>수렴기획</li>
+          <li><span class="n">04</span>정의</li>
+          <li><span class="n">05</span>구현</li>
+        </ol>
+        <p class="flow-note">에이전트를 만들기 전에 아이디어톤을 두고, 수렴기획에서 「지금 만들 수 있는가」로 과제를 좁힙니다.</p>
+      </div>
+
+      <div class="block">
+        <h3>한 일</h3>
+        <ul class="list">
+          <li>Idea to MVP 5단계 방법론 정립</li>
+          <li>Agent 기획서 · 정의서 템플릿과, 산출물이 기준을 넘는지 가리는 평가 체계 설계</li>
+          <li>5일 동안 현장에서 참여자의 이해도와 중간 결과물을 확인하고, 고객사 담당자의 피드백을 매일 과정에 반영</li>
+          <li>RFP 분석 · 입찰설명회 · 기술미팅 직접 리드</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>결과</h3>
+        <div class="stats">
+          <div class="stat"><b>1인 1</b><span>참여자 전원이 에이전트 구현</span></div>
+          <div class="stat"><b class="pt">85~90%</b><span>MVP 완성률</span></div>
+          <div class="stat"><b>약 1.8배</b><span>파일럿 성과로 입찰을 따내 이어진 후속 과정의 규모</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="diagnosis">
+  <div class="wrap grid">
+    <div class="rail"><span class="no">03</span><span class="label">Case</span></div>
+    <div class="body">
+      <h2>조직 진단에서 설계로</h2>
+      <p class="meta"><b>대기업 생활가전 C사 미국 법인</b> · 임직원 115명 · 단독 수행</p>
+      <p class="lead">전사 AI 교육 프로그램을 설계하기 전에, 임직원 115명의 AI 활용 수준 · 업무 병목 · 학습 수요를 파악하는 일.</p>
+
+      <div class="seen">
+        <p class="tag">내가 본 것</p>
+        <blockquote>진단 결과가 곧 설계의 입력이 되어야 합니다. <span class="soft">그래서 설문을 업무 병목 → AI 활용 현황 → 기대 효과 · 학습 수요 → 역량 진단 순으로 짰고, 역량 문항은 실무에서 판단해야 하는 상황으로 냈습니다.</span></blockquote>
+      </div>
+
+      <div class="block">
+        <h3>한 일</h3>
+        <ul class="list">
+          <li>설문 설계(한국어 · 영어)부터 채점 · 분석, 조직 AX 역량 분석 리포트까지 단독 수행</li>
+          <li>진단 키트의 전 과정(설문 생성 → 응답 취합 → 자동 채점 → 리포트 생성)을 Claude Code로 자동화해 영업에 투입</li>
+        </ul>
+        <figure>
+          <img src="images/diagnosis-overview.png" alt="진단 리포트의 전체 분석 화면. AI 지식, 프롬프트 활용, 워크플로우 설계, 활용 현황 네 파트의 결과 요약" width="1018" height="1050" loading="lazy">
+          <figcaption>진단 리포트 「전체 분석」</figcaption>
+        </figure>
+      </div>
+
+      <div class="block">
+        <h3>진단에서 설계로</h3>
+        <table class="table">
+          <thead><tr><th>진단에서 확인한 것</th><th>설계에 반영한 것</th></tr></thead>
+          <tbody>
+            <tr><td>AI 활용이 정보 검색(78%) · 번역(65%)에 치우친 단순 도구 소비 단계</td><td>프로그램 난이도의 출발점</td></tr>
+            <tr><td>원샷 프롬프팅 정답률 59.1% · 페르소나 설정 63.5%</td><td>고급 프롬프팅 모듈 편성</td></tr>
+            <tr><td>응답자 95% 이상이 이미 AI 결과를 고치거나 사실을 확인한 뒤 사용</td><td>산출물 검증은 재교육하지 않음</td></tr>
+          </tbody>
+        </table>
+        <p class="note">업무 병목은 <b>수치 입력 오류 42명 · 반복 문서 작성 30명 · 반복 문의 대응 28명</b>으로 확인했습니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="roadmap">
+  <div class="wrap grid">
+    <div class="rail"><span class="no">04</span><span class="label">Case</span></div>
+    <div class="body">
+      <h2>AX 로드맵과 자가 진단</h2>
+      <p class="meta"><b>고객사용 프레임워크</b> · 프레임워크 설계와 로드맵 구축 주도(팀원과 분담)</p>
+      <p class="lead">AI 교육 수요는 빠르게 바뀌는데, 수요마다 교육을 처음부터 다시 설계하는 것은 전략적이지 않았습니다. 고객사는 맞춤을 원하면서도 가이드를 먼저 제안받기를 원했습니다.</p>
+
+      <div class="seen">
+        <p class="tag">내가 본 것</p>
+        <blockquote>조직의 AI 단계는 하나여도, 구성원마다 받아야 할 교육은 다릅니다. <span class="soft">그래서 「AI 성숙도 단계 × 교육 대상」의 두 축으로 틀을 짰습니다.</span></blockquote>
+      </div>
+
+      <div class="block">
+        <h3>한 일</h3>
+        <ul class="list">
+          <li>기업의 AI 성숙도를 5단계로 정의하고, 비개발 실무자 · 관리자와 경영진 · 개발자에 맞춰 과정을 배치한 AX 교육 로드맵 구축(트랙 5개 · 커리큘럼 약 30개)</li>
+          <li>로드맵을 고객용 사업 소개서로 옮기며 AX-Level 자가 진단 · 조직 유형 4가지와 유형별 추천 교육 · 직무별 교육 사례 10개를 직접 제작</li>
+          <li>로드맵을 바탕으로 고객사에 맞는 교육을 찾아 주는 진단 키트로 확장(<a href="#diagnosis">사례 03</a>)</li>
+        </ul>
+      </div>
+
+      <div class="figs">
+        <figure>
+          <img src="images/ax-level-self-check.png" alt="AX-Level 자가 진단. 레벨 1부터 5까지 단계마다 질문 하나로 조직의 단계를 확인한다" width="1866" height="918" loading="lazy">
+          <figcaption>AX-Level 자가 진단: 단계마다 질문 하나로 조직이 자기 단계를 확인</figcaption>
+        </figure>
+        <figure>
+          <img src="images/ax-level-curriculum.png" alt="AX-Level 5단계 교육 체계 표. 단계별 자가 진단 질문, 핵심 활동, 달성 가치, 주요 기술, 기반 인프라" width="1818" height="1014" loading="lazy">
+          <figcaption>AX-Level 5단계 교육 체계: 단계마다 핵심 활동 · 달성 가치 · 주요 기술 · 기반 인프라</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="end">
+  <div class="wrap">
+    <p class="kicker">Contact</p>
+    <h2>이은경</h2>
+    <p class="copy">언어를 이해하는 AI에서 <span class="pt">사람과 기업을 위한 AX로</span></p>
+    <p class="contact">
+      <a href="mailto:lee.eunkyung001@gmail.com">lee.eunkyung001@gmail.com</a>
+      <a href="tel:+821074778042">010-7477-8042</a>
+      <a href="https://www.linkedin.com/in/lee-eunkyung" target="_blank" rel="noopener">LinkedIn</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
