@@ -251,6 +251,30 @@ figcaption { margin-top: 12px; font-size: .8125rem; line-height: 1.125rem; lette
 }
 @media print { .steps, .tips, .io { break-inside: avoid; } }
 </style>
+<script>
+/* 칸으로 바로 가기: #칸이름 · ?s=칸이름 둘 다 받는다. 글꼴 · 이미지가 늦게 불러와져 위치가 밀려도 다 불러온 뒤 다시 맞춘다 (D92) */
+(function () {
+  var q = new URLSearchParams(location.search).get('s');
+  if (q) { history.replaceState(null, '', location.pathname + '#' + (location.hash.slice(1) || q)); }
+  if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+  var moved = false;
+  window.addEventListener('wheel', function () { moved = true; }, { passive: true, once: true });
+  window.addEventListener('touchmove', function () { moved = true; }, { passive: true, once: true });
+  function go() {
+    if (moved) return;
+    var id = decodeURIComponent(location.hash.slice(1));
+    var el = id && document.getElementById(id);
+    if (!el) return;
+    var h = document.documentElement, prev = h.style.scrollBehavior;
+    h.style.scrollBehavior = 'auto';
+    el.scrollIntoView();
+    h.style.scrollBehavior = prev;
+  }
+  document.addEventListener('DOMContentLoaded', go);
+  window.addEventListener('load', function () { go(); setTimeout(go, 400); });
+  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(go); }
+})();
+</script>
 </head>
 <body>
 
